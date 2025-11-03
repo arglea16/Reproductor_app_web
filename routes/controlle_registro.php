@@ -1,37 +1,48 @@
 <?php
-if (!empty($_POST['bregistrar'])) {
-    // Validar campos vacíos
-    if (empty($_POST['usuario']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['password_confirm'])) {
-        echo "Por favor, complete todos los campos.";
-    } elseif ($_POST['password'] !== $_POST['password_confirm']) {
-        echo "Las contraseñas no coinciden.";
-    } else {
-        $usuario = $_POST['usuario'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+session_start();
 
-        // Validar que el usuario o email no existan ya
-        $stmt = $conexion->prepare("SELECT * FROM usuario WHERE usuario = ? OR email = ?");
-        $stmt->bind_param("ss", $usuario, $email);
-        $stmt->execute();
-        $resultado = $stmt->get_result();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Datos enviados desde el formulario
+    $usuario = $_POST['usuario'] ?? '';
+    $contraseña = $_POST['password'] ?? '';
+    $email    = $_POST['email'] ?? '';
 
-        if ($resultado->num_rows > 0) {
-            echo "El usuario o correo ya están registrados.";
-        } else {
-            // Hashear la contraseña para seguridad
-            $password_hash = password_hash($password, PASSWORD_DEFAULT);
+    // Conexión a la base de datos
+    $conexion = mysqli_connect("127.0.0.1", "root", "", "bd_play_list");
+    mysqli_set_charset($conexion, "utf8mb4");
 
-            // Insertar nuevo usuario
-            $stmt = $conexion->prepare("INSERT INTO usuario (usuario, email, clave) VALUES (?, ?, ?)");
-            $stmt->bind_param("sss", $usuario, $email, $password_hash);
-
-            if ($stmt->execute()) {
-                echo "Registro exitoso. Puedes <a href='index.php'>iniciar sesión</a>.";
-            } else {
-                echo "Error al registrar usuario.";
-            }
-        }
+    if (!$conexion) {
+        die("Error al conectar con la base de datos: " . mysqli_connect_error());
     }
+
+    // Validar si ya existe el usuario o email
+    $check = "SELECT * FROM usuario WHERE usuario='$usuario' OR email='$email'";
+    $resultado_check = mysqli_query($conexion, $check);
+
+    if (!$resultado_check) {
+        die("Error en la consulta: " . mysqli_error($conexion));
+    }
+
+    if (mysqli_num_rows($resultado_check) > 0) {
+        // Usuario o email ya existe
+        header("Location: ../registro.php?error=1");
+        exit;
+    }
+
+    // Insertar el nuevo usuario
+    $insert = "INSERT INTO usuario (usuario, clave, email) VALUES ('$usuario', '$contraseña', '$email')";
+    $resultado_insert = mysqli_query($conexion, $insert);
+
+    if (!$resultado_insert) {
+        die("Error al registrar usuario: " . mysqli_error($conexion));
+    }
+
+    // Registro exitoso, redirigir al login
+    header("Location: ../index.php?registro=ok");
+    exit;
+
+    // Cerrar conexión
+    mysqli_close($conexion);
 }
 ?>
+
