@@ -9,6 +9,7 @@ include("routes/controller.php");
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Formulario de Inicio de Sesión</title>
+  <link rel="stylesheet" href="assets/css/styles.css" /> 
 </head>
 <body>
   <h2>Iniciar Sesión</h2>
@@ -26,6 +27,7 @@ include("routes/controller.php");
     ¿No tienes cuenta?
     <a href="registro.php">Regístrate aquí</a>
   </p>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
 

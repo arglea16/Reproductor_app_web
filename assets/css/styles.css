@@ -1,0 +1,105 @@
+/* styles.css — color y dinamismo para la app */
+:root{
+  --bg:#0f1724; /* deep navy */
+  --panel:#0b1220;
+  --accent:#7c5cff; /* purple */
+  --accent-2:#00d4ff; /* cyan */
+  --muted:#9aa4b2;
+  --glass: rgba(255,255,255,0.04);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(124,92,255,0.12), transparent 10%), radial-gradient(1000px 500px at 90% 90%, rgba(0,212,255,0.08), transparent 12%), var(--bg);
+  color: #e6eef8;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.35;
+  padding:24px;
+}
+
+/* Animated gradient band */
+.animated-band{
+  position:fixed;
+  inset:0; /* full-screen layer */
+  pointer-events:none;
+  z-index:0;
+  background: linear-gradient(120deg, rgba(124,92,255,0.08), rgba(0,212,255,0.06), rgba(124,92,255,0.06));
+  background-size: 400% 400%;
+  animation: bandMove 12s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+@keyframes bandMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* Layout helpers */
+.container{
+  max-width:1100px;
+  margin:0 auto;
+  position:relative;
+  z-index:1; /* above the animated band */
+}
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:22px;
+}
+.brand{
+  display:flex;align-items:center;gap:12px
+}
+.logo{
+  width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  display:flex;align-items:center;justify-content:center;font-weight:700;color:#021124;box-shadow:0 6px 18px rgba(2,9,20,0.6);
+}
+.title{font-size:1.25rem;font-weight:600}
+.subtitle{color:var(--muted);font-size:0.9rem}
+
+/* Panels / cards */
+.panel{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:12px;padding:18px;box-shadow:0 6px 30px rgba(2,6,20,0.6);border:1px solid rgba(255,255,255,0.03);
+}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{
+  padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);
+  transition:transform 220ms ease, box-shadow 220ms ease;
+}
+.card:hover{transform:translateY(-6px);box-shadow:0 14px 40px rgba(2,9,20,0.55)}
+.card h3{margin:0 0 8px 0}
+.card p{margin:0;color:var(--muted);font-size:0.92rem}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#021124;border:none;cursor:pointer;font-weight:600;position:relative;overflow:hidden;box-shadow:0 8px 20px rgba(124,92,255,0.18);
+}
+.btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);box-shadow:none}
+
+/* Ripple helper — JS will create the ripple element */
+.ripple{position:absolute;border-radius:50%;transform:scale(0);animation:ripple 600ms linear;background:rgba(255,255,255,0.12);pointer-events:none}
+@keyframes ripple{to{transform:scale(4);opacity:0}}
+
+/* Reveal on scroll */
+.reveal{opacity:0;transform:translateY(12px);transition:opacity 560ms ease, transform 560ms ease}
+.reveal.in-view{opacity:1;transform:none}
+
+/* Theme toggle */
+.theme-toggle{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:10px;color:var(--muted);cursor:pointer}
+
+/* Footer / audio area */
+.player-bar{display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
+.progress{flex:1;height:8px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden}
+.progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0%}
+
+/* Responsiveness */
+@media (max-width:600px){
+  .header{flex-direction:column;align-items:flex-start}
+  .logo{width:48px;height:48px}
+}
