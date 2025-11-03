@@ -10,7 +10,7 @@
   <form action="" method="POST">
     <?php 
       include("routes/bd.php");
-      include("routes/register_controller.php");
+      include("routes/controlle_registro.php");
     ?>
     <label for="usuario">Usuario:</label><br />
     <input type="text" id="usuario" name="usuario" required /><br /><br />

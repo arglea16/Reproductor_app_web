@@ -1,8 +1,8 @@
 <?php
-$host = "localhost"; // o el host que uses
+$host = "127.0.0.1"; // o el host que uses
 $usuario = "root";
 $contraseña = "";
-$basedatos = "db_play_list";
+$basedatos = "bd_play_list";
 
 // Crear conexión
 $conexion = mysqli_connect($host, $usuario, $contraseña, $basedatos);

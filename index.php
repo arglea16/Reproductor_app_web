@@ -16,7 +16,7 @@ include("routes/controller.php");
     <label for="usuario">Usuario:</label><br />
     <input type="text" id="usuario" name="usuario" required /><br /><br />
 
-    <label for="contrasena">Contraseña:</label><br />
+    <label for="contraseña">Contraseña:</label><br />
     <input type="password" id="contraseña" name="password" required /><br /><br />
 
     <button type="submit" name="bingresar">Entrar</button>
