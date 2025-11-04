@@ -2,7 +2,7 @@
 $host = "127.0.0.1";
 $usuario = "root";
 $contraseña = "";
-$basedatos = "bd_play_list";
+$basedatos = "bd_playlist";
 
 // Crear conexión
 $conexion = mysqli_connect($host, $usuario, $contraseña, $basedatos);

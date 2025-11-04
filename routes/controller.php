@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $_POST['usuario'] ?? '';
     $contraseña = $_POST['password'] ?? '';
 
-    $conexion=mysqli_connect("127.0.0.1","root","","bd_play_list");
+    $conexion=mysqli_connect("127.0.0.1","root","","bd_playlist");
     
 
     if (!$conexion) {

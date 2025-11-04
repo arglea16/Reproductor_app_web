@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email    = $_POST['email'] ?? '';
 
     // Conexión a la base de datos
-    $conexion = mysqli_connect("127.0.0.1", "root", "", "bd_play_list");
+    $conexion = mysqli_connect("127.0.0.1", "root", "", "bd_playlist");
     mysqli_set_charset($conexion, "utf8mb4");
 
     if (!$conexion) {
