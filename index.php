@@ -9,18 +9,23 @@ include("routes/controller.php");
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Formulario de Inicio de Sesión</title>
-  <link rel="stylesheet" href="assets/css/styles.css" /> 
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
   <h2>Iniciar Sesión</h2>
-  <form action="" method="POST">
+
+  <?php if (isset($_GET['error'])): ?>
+    <p style="color:red;">Error en la autenticación. Intenta de nuevo.</p>
+  <?php endif; ?>
+
+  <form action="routes/controller.php" method="POST">
     <label for="usuario">Usuario:</label><br />
     <input type="text" id="usuario" name="usuario" required /><br /><br />
 
-    <label for="contraseña">Contraseña:</label><br />
-    <input type="password" id="contraseña" name="password" required /><br /><br />
+    <label for="password">Contraseña:</label><br />
+    <input type="password" id="password" name="password" required /><br /><br />
 
-    <button type="submit" name="bingresar">Entrar</button>
+    <button type="submit" name="bingresar" class="btn">Entrar</button>
   </form>
 
   <p>
@@ -30,4 +35,3 @@ include("routes/controller.php");
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>
-
