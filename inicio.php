@@ -19,6 +19,7 @@
             </div>
             <div style="display:flex;gap:8px;align-items:center">
                 <input class="search" type="search" placeholder="Buscar canción o artista..." aria-label="Buscar">
+                <button class="btn btn-search">Buscar</button>
                 <button class="theme-toggle">🌗</button>
             </div>
         </header>
@@ -86,5 +87,6 @@
     </main>
 
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/search_music.js" defer></script>
 </body>
 </html>
