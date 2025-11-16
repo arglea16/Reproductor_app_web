@@ -29,20 +29,20 @@
                 <h3>Lista de canciones</h3>
                 <div class="playlist">
                     <!-- Cada .track puede tener data-src a un archivo en media/ -->
-                    <div class="track reveal" data-src="media/track1.mp3" data-title="Demo Track 1" data-artist="Artista A">
+                    <div class="track reveal" data-src="media/linkin-park.mp3" data-title="the end" data-artist="linkin park">
                         <div class="track-meta">
-                            <strong>Demo Track 1</strong>
-                            <span class="muted">Artista A</span>
+                            <strong>the end</strong>
+                            <span class="muted">linkin park</span>
                         </div>
                         <div class="track-actions">
                             <button class="btn btn-play">Play</button>
                         </div>
                     </div>
 
-                    <div class="track reveal" data-src="media/track2.mp3" data-title="Demo Track 2" data-artist="Artista B">
+                    <div class="track reveal" data-src="media/EoO - Bad Bunny (320).mp3" data-title="EoO" data-artist="Bad Bunny">
                         <div class="track-meta">
-                            <strong>Demo Track 2</strong>
-                            <span class="muted">Artista B</span>
+                            <strong>EoO</strong>
+                            <span class="muted">Bad Bunny</span>
                         </div>
                         <div class="track-actions">
                             <button class="btn btn-play">Play</button>
@@ -70,7 +70,8 @@
                     <div class="player-cover panel" style="width:120px;height:120px;display:flex;align-items:center;justify-content:center">♪</div>
                 </div>
 
-                <canvas id="waveform" width="900" height="140" style="width:100%;height:140px;border-radius:8px;margin-top:12px;background:rgba(255,255,255,0.02)"></canvas>
+                <canvas id="waveform" width="900" height="140" style="width:100%;height:140px;border-radius:8px;margin-top:12px;">
+                </canvas>
 
                 <div class="player-bar" style="margin-top:12px">
                     <button class="btn btn-prev">⏮</button>
